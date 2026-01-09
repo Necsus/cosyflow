@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-cozy-cream text-cozy-darkbrown font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .cozy-card {
+    @apply bg-white rounded-2xl shadow-cozy hover:shadow-cozy-lg transition-shadow duration-300;
+  }
+
+  .cozy-button {
+    @apply px-6 py-3 rounded-xl font-medium transition-all duration-300 shadow-cozy hover:shadow-cozy-lg;
+  }
+
+  .cozy-button-primary {
+    @apply cozy-button bg-cozy-coral text-white hover:bg-opacity-90;
+  }
+
+  .cozy-button-secondary {
+    @apply cozy-button bg-cozy-beige text-cozy-brown hover:bg-cozy-peach;
+  }
+
+  .cozy-input {
+    @apply w-full px-4 py-3 rounded-xl border-2 border-cozy-beige focus:border-cozy-coral focus:outline-none transition-colors duration-300 bg-white;
+  }
+
+  .cozy-badge {
+    @apply inline-block px-3 py-1 rounded-full text-sm font-medium;
+  }
+}
