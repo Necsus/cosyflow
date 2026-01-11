@@ -2,17 +2,17 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: cozyflow-com
+  name: cozyflow-necsus-dev
   namespace: envoy-gateway-system
 spec:
-  secretName: cozyflow-com-tls
+  secretName: cozyflow-necsus-dev-tls
   issuerRef:
     kind: ClusterIssuer
     name: letsencrypt-prod
-  commonName: cozyflow.com
+  commonName: cozyflow.necsus.dev
   dnsNames:
-    - cozyflow.com
-    - api.cozyflow.com
+    - cozyflow.necsus.dev
+    - cfapi.necsus.dev
 ---
 apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
@@ -23,25 +23,25 @@ spec:
   gatewayClassName: envoy
   listeners:
     - name: cozyflow-https
-      hostname: cozyflow.com
+      hostname: cozyflow.necsus.dev
       port: 443
       protocol: HTTPS
       tls:
         mode: Terminate
         certificateRefs:
-          - name: cozyflow-com-tls
+          - name: cozyflow-necsus-dev-tls
             kind: Secret
       allowedRoutes:
         namespaces:
           from: All
     - name: api-cozyflow-https
-      hostname: api.cozyflow.com
+      hostname: cfapi.necsus.dev
       port: 443
       protocol: HTTPS
       tls:
         mode: Terminate
         certificateRefs:
-          - name: cozyflow-com-tls
+          - name: cozyflow-necsus-dev-tls
             kind: Secret
       allowedRoutes:
         namespaces:

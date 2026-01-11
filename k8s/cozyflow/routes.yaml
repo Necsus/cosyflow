@@ -10,7 +10,7 @@ spec:
       namespace: envoy-gateway-system
       sectionName: cozyflow-https
   hostnames:
-    - cozyflow.com
+    - cozyflow.necsus.dev
   rules:
     - backendRefs:
         - name: cozyflow-frontend
@@ -27,7 +27,7 @@ spec:
       namespace: envoy-gateway-system
       sectionName: api-cozyflow-https
   hostnames:
-    - api.cozyflow.com
+    - cfapi.necsus.dev
   rules:
     - backendRefs:
         - name: cozyflow-api

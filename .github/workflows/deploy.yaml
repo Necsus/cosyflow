@@ -18,7 +18,7 @@ jobs:
       IMAGE_TAG: ${{ github.sha }}
       POSTGRES_HOST: ${{ secrets.POSTGRES_HOST || 'postgres.database.svc.cluster.local' }}
       POSTGRES_PORT: ${{ secrets.POSTGRES_PORT || '5432' }}
-      VITE_API_URL: https://api.cozyflow.com
+      VITE_API_URL: https://cfapi.necsus.dev
     steps:
       - name: Checkout
         uses: actions/checkout@v4
