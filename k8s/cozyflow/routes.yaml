@@ -1,0 +1,34 @@
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: cozyflow-frontend
+  namespace: cozyflow
+spec:
+  parentRefs:
+    - name: cozyflow-gateway
+      namespace: envoy-gateway-system
+      sectionName: cozyflow-https
+  hostnames:
+    - cozyflow.com
+  rules:
+    - backendRefs:
+        - name: cozyflow-frontend
+          port: 80
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: cozyflow-api
+  namespace: cozyflow
+spec:
+  parentRefs:
+    - name: cozyflow-gateway
+      namespace: envoy-gateway-system
+      sectionName: api-cozyflow-https
+  hostnames:
+    - api.cozyflow.com
+  rules:
+    - backendRefs:
+        - name: cozyflow-api
+          port: 8000
